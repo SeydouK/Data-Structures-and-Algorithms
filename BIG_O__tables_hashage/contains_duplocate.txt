@@ -1,0 +1,6 @@
+## Contains Duplicate
+- Idée : garder un set des valeurs déjà vues ; si la valeur y est déjà, il y a un doublon.
+- Complexité : temps O(n), mémoire O(n).
+- Mon erreur : j'ai utilisé une liste au lieu d'un set (O(n²) caché), et un bug
+  nums[i+1] au lieu de nums[i] que mon test n'a pas détecté.
+- À retenir : tester aussi un cas sans doublon.

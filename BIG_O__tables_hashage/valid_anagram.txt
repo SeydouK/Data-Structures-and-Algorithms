@@ -1,0 +1,9 @@
+## Valid Anagram 
+# Idée A : 
+    - Idée : On crée une fonction qui prend deux valeurs (mot_1 et mot_2), les trie les deux mots, avec sorted, 
+    puis les compare. Elle return True si les deux mots sont des anagrames, False sinon.
+    - Complexité : temps O(n log n), mémoire O(n log n).
+# Idée B : 
+    - Idée : On cree une fonction qui prend deux valeurs (mot et dicto), pour chaque lettre dans mot, on cree une
+    clee et une valeur. La valeur augmente a chaque occurence du mot. On appelle la fonction pour deux mots et dictos differents que l'on comparera ensuite.
+    - Complexité : temps O(n), mémoire O(n).
