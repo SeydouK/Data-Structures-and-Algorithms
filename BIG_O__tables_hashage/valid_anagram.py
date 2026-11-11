@@ -1,31 +1,34 @@
-mot = input("Entrez le premier mot: ")
-mot_2 = input("Entrez le second mot: ")
+from collections import defaultdict 
 
 # Idée A : 
 def anagram_A(mot_1:str, mot_2:str) -> bool: 
-    if sorted(mot_1.lower()) == sorted(mot_2.lower()):
-        return True 
-    else: 
-        return False 
-
-if anagram_A(mot, mot_2):
-    print(f"{mot} et {mot_2} sont des Anagrammes.")
-else: 
-    print(f"{mot} et {mot_2} ne sont pas des anagrammes.")
+    return sorted(mot_1.lower()) == sorted(mot_2.lower())
 
 # Idée B : 
-dicto_1 = {}
-dicto_2 = {}
-
-def anagram_B(mot:str, dicto:dict) -> dict:
-    for letter in mot:
+def count_letters(word:str)->dict: 
+    dicto = defaultdict(int)
+    for letter in word:
         dicto[letter] = dicto.get(letter, 0) + 1
     return dicto
 
-dicto_1 = anagram_B(mot, dicto_1)
-dicto_2 = anagram_B(mot_2, dicto_2)
+def anagram_B(mot_1:str, mot_2:str) -> bool:
+    mot_1, mot_2 = mot_1.lower(), mot_2.lower()
+    if len(mot_1) != len(mot_2):
+        return False
+    return count_letters(mot_1) == count_letters(mot_2)
 
-if dicto_1 == dicto_2:
-    print(f"{mot} et {mot_2} sont des anagrammes.")
-else:
-    print(f"{mot} et {mot_2} ne sont pas des anagrammes.")
+if __name__ == '__main__':
+    cases = [
+        ("listen", "silent", True), 
+        ("rat", "car", False),
+        ("Listen", "Silent", True),   
+        ("a", "ab", False),          
+        ("", "", True),               
+        ("aab", "abb", False),        
+    ]
+
+    for a, b, expected in cases: 
+        assert anagram_A(a, b) == expected, ("sort", a, b)
+        assert anagram_B(a, b) == expected, ("count", a, b)
+
+    print("Tous les tests sont passés")

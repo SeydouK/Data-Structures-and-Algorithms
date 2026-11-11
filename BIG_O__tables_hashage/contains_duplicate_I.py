@@ -12,7 +12,7 @@ def contains_duplicate(nums:list[int]) -> bool:
     for i in nums: 
         if i in seen:
             return True 
-        seen.add(nums[i])
+        seen.add(i)
     return False
 
 print(contains_duplicate([12,3,12,5,6,0]))
