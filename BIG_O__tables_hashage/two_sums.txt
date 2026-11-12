@@ -1,0 +1,4 @@
+## Two Sums opt
+- Idée : A partir d'une liste, je dois trouver deux nombres dont l'addition donne une cible donnée.
+- Complexité : temps O(n), mémoire O(n).
+- À retenir : tester aussi un cas sans doublon.
