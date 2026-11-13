@@ -7,26 +7,27 @@ def two_sum_naive(liste:list[int], target:int)->tuple[int, int]:
     return (0, 0)
 
 def two_sum_opt(liste:list[int], target:int) -> tuple[int, int]:
-    seen = {} # memoire : O(1)
+    seen = {} # Espace : O(1) / Temps : O(1)
 
-    for i, n in enumerate(liste): # temps: O(n)
-        complement = target - n  # memoire O (n)
-        if complement in seen:  # Memoire O (1)
-            return (seen[complement], i)
-        seen[n] = i 
+    for i, n in enumerate(liste): # Temps : O(n) / Espace : O (n)
+        complement = target - n  # Temps : O(1) / Espace : O(1)
+        if complement in seen:  # Temps O (1) / Espace : O(1)
+            return (seen[complement], i) 
+        seen[n] = i # Temps : O(1) / Espace : O(n)
     return (0, 0)
 
 
-# Complexite finale 
-# temps : O(1)
-# memoire O(n)
+# Complexité finale
+# Temps : O(n) en moyenne
+# Espace : O(n)
     
 if __name__ == '__main__':
     cases = [
-        ([12,3,51,2], 14, (0, 3)),
-        ([1,34,5,12], 16, (0, 0)),
-        ([], 12, (0, 0)),
-        ([5,-1,2], 4, (0, 1))
+        ([2, 7, 11, 15], 9, (0, 1)),
+        ([3, 2, 4], 6, (1, 2)),
+        ([3, 3], 6, (0, 1)),
+        ([-1, -2, -3, -4], -6, (1, 3)),
+        ([0, 4, 3, 0], 0, (0, 3))
     ]
 
     for a, b, expected in cases:
